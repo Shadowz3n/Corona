@@ -11,7 +11,7 @@ function createSpriteImages(event, width, height, spritesNum, delay, x, y)
 	loadingSprites 					= sprite.newSpriteSet(loadEventSpriteSheet, 1, spritesNum);
 	sprite.add(loadingSprites, event, 1, spritesNum, delay, 0);
 	event = sprite.newSprite(loadingSprites);
-	event.x, event.y = x, y;
+	event.x, event.y 				= x, y;
 	event:prepare(event);
 	event:play();
 	return event;
@@ -49,6 +49,6 @@ end
 -- Transparent all
 function transparentAssets(event)
 	for key, value in pairs(event) do
-		assetsGame[key].alpha = 0;
+		assetsGame[key].alpha 		= 0;
 	end
 end
