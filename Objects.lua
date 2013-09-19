@@ -5,6 +5,18 @@ function createImageObject(event, x, y, speed)
 	return event;
 end
 
+-- Create a Sprite Images
+function createSpriteImages(event, width, height, spritesNum, delay, x, y)
+	loadEventSpriteSheet 			= sprite.newSpriteSheet(event, width, height);
+	loadingSprites 					= sprite.newSpriteSet(loadEventSpriteSheet, 1, spritesNum);
+	sprite.add(loadingSprites, event, 1, spritesNum, delay, 0);
+	event = sprite.newSprite(loadingSprites);
+	event.x, event.y = x, y;
+	event:prepare(event);
+	event:play();
+	return event;
+end
+
 -- Create a Rect
 function createRect(event, x, y, width, height, strokeWidth)
 	event = display.newRect(0, 0, width, height);
@@ -30,7 +42,7 @@ end
 -- Delete all from Scene
 function deleteAssets(event, times)
 	for key, value in pairs(event) do
-		transition.to(event[key], {time=times, alpha=0, onComplete = function() event[key]:removeSelf() end});
+		transition.to(event[key], {time=times, alpha=0, onComplete = function() event[key]:removeSelf(); end});
 	end
 end
 
